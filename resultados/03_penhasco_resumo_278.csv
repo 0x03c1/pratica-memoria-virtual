@@ -1,0 +1,4 @@
+id,so,modo,repeticao,disponivel_inicial_mb,ram_total_mb,base_ms_por_mb,ponto_quebra_mb,quebra_sobre_disponivel,quebra_sobre_ram_total,pos_quebra_ms_por_mb,razao_salto,parou_por
+278,Linux,cheio,1,6645,7370,0.481795,6656,1.001618,0.903121,5.496051,11.407456,penhasco
+278,Linux,cheio,2,6779,7370,0.471342,6656,0.981924,0.903121,4.979471,10.564449,penhasco
+278,Linux,cheio,3,6785,7370,0.475316,6656,0.981054,0.903121,6.599028,13.883467,penhasco

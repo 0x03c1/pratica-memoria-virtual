@@ -1,0 +1,2 @@
+id,so,so_versao,arquitetura,cpu,nucleos_logicos,ram_total_mb,tamanho_pagina_bytes,python,data_hora,script,parametros,ram_disponivel_mb,ram_livre_mb,swap_total_mb,swap_usado_mb,especificacao_ram,clock_real_mhz,latencia_ns,vazao_gb_s_por_canal
+278,Linux,Ubuntu 26.04.1 LTS (kernel 7.0.0-42-generic),x86_64,Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz,6,7370,4096,3.14.4,2026-11-10T09:48:23,01_inspecionar_memoria,mts=2400.0 cl=17.0,6696,6637,4096,64,no Linux a velocidade dos pentes só aparece com 'sudo dmidecode -t memory' (não é necessário para a prática),1200.0,14.166667,19.2
