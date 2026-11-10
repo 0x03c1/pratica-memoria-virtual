@@ -1,0 +1,2 @@
+id,so,so_versao,arquitetura,cpu,nucleos_logicos,ram_total_mb,tamanho_pagina_bytes,python,data_hora,script,parametros,ram_disponivel_mb,ram_livre_mb,swap_total_mb,swap_usado_mb,especificacao_ram,clock_real_mhz,latencia_ns,vazao_gb_s_por_canal
+2025200003,Linux,Ubuntu 24.04.5 LTS (kernel 6.14.0-37-generic),x86_64,Intel(R) Core(TM) i5-1035G1 CPU @ 1.00GHz,8,15650,4096,3.12.3,2026-11-10T08:51:12,01_inspecionar_memoria,mts=3200.0 cl=16.0,9963,4414,4096,0,no Linux a velocidade dos pentes só aparece com 'sudo dmidecode -t memory' (não é necessário para a prática),1600.0,10.0,25.6

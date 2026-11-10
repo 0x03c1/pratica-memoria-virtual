@@ -1,0 +1,4 @@
+id,so,modo,repeticao,disponivel_inicial_mb,ram_total_mb,base_ms_por_mb,ponto_quebra_mb,quebra_sobre_disponivel,quebra_sobre_ram_total,pos_quebra_ms_por_mb,razao_salto,parou_por
+2025200003,Linux,cheio,1,13053,15650,0.417153,,,,,,limite
+2025200003,Linux,cheio,2,13528,15650,0.432024,,,,,,limite
+2025200003,Linux,cheio,3,13571,15650,0.427693,,,,,,limite
