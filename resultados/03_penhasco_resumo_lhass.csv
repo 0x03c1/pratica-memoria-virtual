@@ -1,0 +1,4 @@
+id,so,modo,repeticao,disponivel_inicial_mb,ram_total_mb,base_ms_por_mb,ponto_quebra_mb,quebra_sobre_disponivel,quebra_sobre_ram_total,pos_quebra_ms_por_mb,razao_salto,parou_por
+lhass,Linux,cheio,1,12749,15765,0.345597,,,,,,limite
+lhass,Linux,cheio,2,13164,15765,0.392226,,,,,,limite
+lhass,Linux,cheio,3,13414,15765,0.363319,17920,1.335937,1.136695,5.00995,13.789409,limite (penhasco nas últimas fatias)
