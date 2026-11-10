@@ -36,14 +36,6 @@ CAMPOS_RESUMO = ["id", "so", "modo", "repeticao", "disponivel_inicial_mb", "ram_
                  "pos_quebra_ms_por_mb", "razao_salto", "parou_por"]
 
 
-def base_da_varredura(medidas: list[dict], disp_inicial: float) -> float | None:
-    """Tempo típico (mediana) das fatias que certamente cabem na RAM."""
-    seguras = [m["ms_por_mb"] for m in medidas[1:5] if m["fim_mb"] <= 0.6 * disp_inicial]
-    if len(seguras) < 2:
-        seguras = [m["ms_por_mb"] for m in medidas[:2]]
-    return statistics.median(seguras) if len(seguras) >= 2 else None
-
-
 def varrer(rep: int, args, tocador, limite_mb: int, meta: dict, escritor) -> dict:
     # Reserva a região inteira (só memória virtual; nada vai para a RAM ainda).
     tamanho_mb = limite_mb
@@ -81,8 +73,10 @@ def varrer(rep: int, args, tocador, limite_mb: int, meta: dict, escritor) -> dic
         m = {"inicio_mb": inicio // comum.MB, "fim_mb": fim // comum.MB, "ms_por_mb": ms_mb}
         medidas.append(m)
 
-        if base is None and len(medidas) >= 3:
-            base = base_da_varredura(medidas, disp_inicial)
+        # A base é refinada até a 5ª fatia (usa as fatias 1 a 4, a mesma regra do analise.py).
+        if 3 <= len(medidas) <= 5:
+            base = comum.base_penhasco([x["ms_por_mb"] for x in medidas], [x["fim_mb"] for x in medidas],
+                                       disp_inicial)
         lenta = int(base is not None and ms_mb >= args.fator_lento * base)
         seguidas = seguidas + 1 if lenta else 0
         if quebra_mb is None and seguidas >= args.consecutivas:
