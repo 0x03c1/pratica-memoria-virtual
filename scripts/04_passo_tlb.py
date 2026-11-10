@@ -22,6 +22,7 @@ Uso:
 from __future__ import annotations
 
 import argparse
+import mmap
 import random
 import sys
 import time
@@ -82,6 +83,14 @@ def main() -> int:
         regiao = comum.alocar(extensao)
     except comum.ErroAlocacao as exc:
         comum.erro(f"{exc} Reduza --acessos ou o maior passo.")
+    # Linux com Transparent Huge Pages em 'always' montaria a região com páginas de 2 MB, e a
+    # TLB passaria a cobrir tudo (a curva ficaria plana). Pedimos páginas do tamanho normal.
+    # Precisa vir antes do primeiro toque. No macOS e no Windows a constante não existe.
+    if hasattr(mmap, "MADV_NOHUGEPAGE"):
+        try:
+            regiao.madvise(mmap.MADV_NOHUGEPAGE)
+        except OSError:
+            pass
     dados = np.frombuffer(regiao, dtype=np.uint8)
 
     # Prepara os índices de cada passo e toca as páginas usadas (tira page faults da medição).
