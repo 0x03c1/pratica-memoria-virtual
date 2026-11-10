@@ -1,0 +1,4 @@
+id,so,modo,repeticao,disponivel_inicial_mb,ram_total_mb,base_ms_por_mb,ponto_quebra_mb,quebra_sobre_disponivel,quebra_sobre_ram_total,pos_quebra_ms_por_mb,razao_salto,parou_por
+278-macos,macOS,cheio,1,11357,16384,0.054226,10240,0.901629,0.625,0.595595,10.983661,penhasco
+278-macos,macOS,cheio,2,11692,16384,0.082151,10496,0.897669,0.640625,1.264129,15.387875,penhasco
+278-macos,macOS,cheio,3,11380,16384,0.066032,14592,1.282272,0.890625,0.758542,11.487558,penhasco
