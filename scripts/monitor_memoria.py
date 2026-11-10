@@ -35,24 +35,27 @@ def main() -> int:
         comum.erro("--intervalo deve ser maior que zero.")
 
     psutil = comum.exigir_psutil()
-    windows = platform.system() == "Windows"
     print("Monitor de memória (Ctrl+C para sair)")
     print(f"{'hora':>8} | {'disponível':>10} | {'uso RAM':>7} | {'swap usado':>10} | {'si MB/s':>8} | {'so MB/s':>8}")
-    anterior = psutil.swap_memory()
+    # comum.ler_memoria() traz os contadores certos de cada SO (no macOS, Swapins/Swapouts do vm_stat).
+    anterior, t_anterior = comum.ler_memoria(), time.monotonic()
     try:
         while True:
             time.sleep(args.intervalo)
             vm = psutil.virtual_memory()
-            sw = psutil.swap_memory()
-            if windows:
+            mem, agora = comum.ler_memoria(), time.monotonic()
+            intervalo = agora - t_anterior
+            if mem["swap_in_mb"] is None or anterior["swap_in_mb"] is None:
                 si = so = "n/d"
+                alerta = ""
             else:
-                si = f"{(sw.sin - anterior.sin) / comum.MB / args.intervalo:8.1f}"
-                so = f"{(sw.sout - anterior.sout) / comum.MB / args.intervalo:8.1f}"
-            anterior = sw
-            alerta = "  <- swap ativo" if (not windows and (float(si) > 1 or float(so) > 1)) else ""
+                taxa_in = (mem["swap_in_mb"] - anterior["swap_in_mb"]) / intervalo
+                taxa_out = (mem["swap_out_mb"] - anterior["swap_out_mb"]) / intervalo
+                si, so = f"{taxa_in:8.1f}", f"{taxa_out:8.1f}"
+                alerta = "  <- swap ativo" if (taxa_in > 1 or taxa_out > 1) else ""
+            anterior, t_anterior = mem, agora
             print(f"{dt.datetime.now():%H:%M:%S} | {vm.available / comum.MB:7.0f} MB | {vm.percent:6.1f}% | "
-                  f"{sw.used / comum.MB:7.0f} MB | {si:>8} | {so:>8}{alerta}", flush=True)
+                  f"{mem['swap_usado_mb']:7.0f} MB | {si:>8} | {so:>8}{alerta}", flush=True)
     except KeyboardInterrupt:
         print("\nMonitor encerrado.")
     return 0
