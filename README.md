@@ -9,12 +9,12 @@ Python, sem privilégio de administrador.
 
 ## A atividade, em 4 passos
 
-| # | O que fazer | Onde | Quando |
-|---|---|---|---|
-| 1 | Instalar e verificar o ambiente | seção [Instalação](#instalação) deste README | 08h35 a 08h45 |
-| 2 | Seguir o roteiro, em dupla | [ROTEIRO.md](ROTEIRO.md) | 08h45 a 09h52 |
-| 3 | Preencher o relatório | copie [entrega/RELATORIO-MODELO.md](entrega/RELATORIO-MODELO.md) para `entrega/RELATORIO-<id>.md` | ao longo da aula; fechar até 09h58 |
-| 4 | Entregar | canal indicado pelo professor | até 10h00 |
+| # | O que fazer | Onde |
+|---|---|---|
+| 1 | Instalar e verificar o ambiente | seção [Instalação](#instalação) deste README |
+| 2 | Seguir o roteiro, em dupla | [ROTEIRO.md](ROTEIRO.md) |
+| 3 | Preencher o relatório, ao longo da aula | copie [entrega/RELATORIO-MODELO.md](entrega/RELATORIO-MODELO.md) para `entrega/RELATORIO-<id>.md` |
+| 4 | Entregar | canal indicado pelo professor |
 
 ### O que entregar
 
@@ -49,7 +49,8 @@ O núcleo obrigatório do relatório: o gráfico, o ponto de quebra medido e as 
 
 ## Atenção antes de rodar
 
-As etapas 2 e 3 deixam a máquina lenta **de propósito** por alguns segundos.
+Os scripts `02_tocar_blocos.py` e `03_penhasco_fino.py` deixam a máquina lenta **de propósito**
+por alguns segundos.
 
 - Salve seus arquivos e feche programas pesados (navegador com muitas abas, IDEs, jogos).
 - Não rode em servidor de produção nem em máquina compartilhada.
@@ -89,7 +90,7 @@ python -m pip install -r requirements.txt
 **Windows** (PowerShell)
 
 ```powershell
-python3 -m venv .venv
+py -3 -m venv .venv
 .venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
 ```
@@ -102,6 +103,9 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 ```
 
 No Prompt de Comando (cmd) use `.venv\Scripts\activate.bat`.
+
+Se o comando `py` não existir, crie o ambiente com `python -m venv .venv`. Evite `python3` no
+Windows: o instalador do python.org não cria esse comando, e ele abre a Microsoft Store.
 
 Com o ambiente ativo, o prompt mostra `(.venv)` e o comando `python` funciona igual nos três
 sistemas. Todos os comandos do roteiro assumem o ambiente ativo e o terminal na raiz do repositório.

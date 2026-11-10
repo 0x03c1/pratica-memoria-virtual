@@ -1,14 +1,14 @@
 # Roteiro do aluno: o penhasco da memória virtual
 
-Duração: 85 min (08h35 às 10h00). Trabalho em duplas, com Pair Programming.
+Duração prevista: cerca de 85 min. Trabalho em duplas, com Pair Programming.
 
-| Horário | Etapa | Entregável parcial |
+| Duração | Etapa | Entregável parcial |
 |---|---|---|
-| 08h35 a 08h45 | Preparação | `resultados/identificacao.txt` |
-| 08h45 a 09h15 | Parte 1: hipótese e medição guiada | `resultados/02_blocos_<id>.csv` |
-| 09h15 a 09h40 | Parte 2: penhasco fino, TLB e gráficos | `resultados/grafico_03_penhasco_<id>.png` |
-| 09h40 a 09h52 | Discussão Think-Pair-Share | anotações no relatório |
-| 09h52 a 10h00 | Relatório e entrega | `entrega/RELATORIO-<id>.md` |
+| 10 min | Preparação | `resultados/identificacao.txt` |
+| 30 min | Parte 1: hipótese e medição guiada | `resultados/02_blocos_<id>.csv` |
+| 25 min | Parte 2: penhasco fino, TLB e gráficos | `resultados/grafico_03_penhasco_<id>.png` |
+| 12 min | Discussão Think-Pair-Share | anotações no relatório |
+| 8 min | Relatório e entrega | `entrega/RELATORIO-<id>.md` |
 
 ## Papéis da dupla
 
@@ -28,7 +28,7 @@ medições (a do Piloto da Preparação) para que todos os CSVs sejam da mesma m
 
 ---
 
-## Preparação (08h35 a 08h45, 10 min)
+## Preparação (10 min)
 
 **Objetivo:** deixar a máquina pronta e registrar o identificador da dupla.
 
@@ -51,9 +51,9 @@ Se houver `FALHA`, veja "Problemas comuns" no fim deste roteiro antes de chamar 
 
 ---
 
-## Parte 1: hipótese e medição guiada (08h45 a 09h15, 30 min)
+## Parte 1: hipótese e medição guiada (30 min)
 
-### 1.1 Quanta RAM livre você tem de verdade? (08h45 a 08h50)
+### 1.1 Quanta RAM livre você tem de verdade? (5 min)
 
 **Objetivo:** obter a linha de base (o `free -h` do slide) e praticar a leitura da etiqueta DDR.
 
@@ -73,7 +73,7 @@ novo com a taxa e a CL dela. Se a CL não aparecer, use o exemplo do slide.
 
 **Checkpoint:** existe `resultados/01_memoria_<id>.csv`. A RAM disponível está anotada no relatório.
 
-### 1.2 Hipótese escrita, antes de rodar (08h50 a 08h55)
+### 1.2 Hipótese escrita, antes de rodar (5 min)
 
 **Objetivo:** comprometer-se com uma previsão (é ela que torna a medição um experimento).
 
@@ -92,7 +92,7 @@ latências do slide (RAM: 80 ns; SSD NVMe: 50 000 ns).
 
 **Checkpoint:** a hipótese está escrita no relatório **antes** do passo 1.3.
 
-### 1.3 O experimento (08h55 a 09h07)
+### 1.3 O experimento (12 min)
 
 **Objetivo:** medir o tempo por MB, os page faults pesados (major faults) e a atividade de swap.
 
@@ -125,11 +125,11 @@ ou se um bloco passar de 90 s. Em uma máquina de 8 GB leva menos de 1 minuto.
 - No resultado: a coluna `ms/MB`. Ela fica estável e de repente salta?
 - A coluna `major faults` (no Windows aparece `n/d`, porque o Windows não separa faltas leves de pesadas).
 
-**TROCA DE PAPEL (cerca de 09h00):** Aluno B assume como Piloto a partir daqui.
+**TROCA DE PAPEL:** Aluno B assume como Piloto a partir daqui.
 
 **Checkpoint:** existem `resultados/02_blocos_<id>.csv` e `resultados/02_blocos_resumo_<id>.csv`.
 
-### 1.4 Registre a medição (09h07 a 09h15)
+### 1.4 Registre a medição (8 min)
 
 **Objetivo:** preencher a tabela do slide "Registre a medição".
 
@@ -145,9 +145,9 @@ Copiem para o relatório (seção 3), a partir da saída do 02, uma linha por bl
 
 ---
 
-## Parte 2: penhasco fino, TLB e gráficos (09h15 a 09h40, 25 min)
+## Parte 2: penhasco fino, TLB e gráficos (25 min)
 
-### 2.1 Encontre o penhasco (09h15 a 09h25)
+### 2.1 Encontre o penhasco (10 min)
 
 **Objetivo:** localizar o ponto de quebra com precisão de 256 MB (item 1 do "Mão na massa").
 
@@ -171,7 +171,7 @@ Máquina lenta: `python scripts/03_penhasco_fino.py --rapido` (fatias de 512 MB,
 
 **Checkpoint:** existem `resultados/03_penhasco_<id>.csv` e `resultados/03_penhasco_resumo_<id>.csv`.
 
-### 2.2 Mate a TLB (09h25 a 09h30)
+### 2.2 Mate a TLB (5 min)
 
 **Objetivo:** medir o custo de pular de página em página (item 2 do "Mão na massa").
 
@@ -193,9 +193,9 @@ passo grande é mais lento? (Pista: slide "Página, tabela de páginas e TLB".)
 
 **Checkpoint:** existem `resultados/04_passo_<id>.csv` e `resultados/04_passo_resumo_<id>.csv`.
 
-**TROCA DE PAPEL (cerca de 09h30):** Aluno A volta a ser Piloto.
+**TROCA DE PAPEL:** Aluno A volta a ser Piloto.
 
-### 2.3 Análise e gráficos (09h30 a 09h40)
+### 2.3 Análise e gráficos (10 min)
 
 **Objetivo:** gerar as estatísticas e os gráficos para o relatório.
 
@@ -221,13 +221,13 @@ pasta compartilhada que o professor indicar. É com eles que a turma compara os 
 
 ---
 
-## Discussão Think-Pair-Share (09h40 a 09h52, 12 min)
+## Discussão Think-Pair-Share (12 min)
 
-**Think (09h40 a 09h43, individual):** cada aluno responde sozinho, por escrito:
+**Think (3 min, individual):** cada aluno responde sozinho, por escrito:
 "O seu serviço está lento. O htop mostra CPU a 30% e swap ativo. Você compra uma CPU melhor ou
 mais RAM? Justifique com o **seu** gráfico."
 
-**Pair (09h43 a 09h47):** juntem-se a uma dupla que usou **outro sistema operacional**.
+**Pair (4 min):** juntem-se a uma dupla que usou **outro sistema operacional**.
 Comparem: base em ms/MB, ponto de quebra / RAM disponível, tamanho do salto e o passo em que a
 TLB "morreu". Para comparar no computador, copiem os CSVs da outra dupla para uma pasta (por
 exemplo `dados/turma/`) junto com os seus e rodem:
@@ -238,7 +238,7 @@ python scripts/analise.py --consolidar dados/turma
 
 Os gráficos e as tabelas comparativas saem em `resultados/turma/`.
 
-**Share (09h47 a 09h52):** o professor projeta a consolidação da turma inteira. Perguntas-guia:
+**Share (5 min):** o professor projeta a consolidação da turma inteira. Perguntas-guia:
 1. Em qual SO o penhasco aparece mais perto da RAM disponível? Por quê?
 2. O salto foi do mesmo tamanho em todos? O que muda entre as máquinas (disco, SO, tamanho da página)?
 3. Por que nos Macs com Apple Silicon a TLB "morre" com passo de 16 KB e não de 4 KB?
@@ -247,7 +247,7 @@ Os gráficos e as tabelas comparativas saem em `resultados/turma/`.
 
 ---
 
-## Relatório e entrega (09h52 a 10h00, 8 min)
+## Relatório e entrega (8 min)
 
 1. Copiem `entrega/RELATORIO-MODELO.md` para `entrega/RELATORIO-<id>.md` (se ainda não fizeram).
 2. Completem as seções em aberto. O núcleo obrigatório, como no slide: **o gráfico do item 1**
