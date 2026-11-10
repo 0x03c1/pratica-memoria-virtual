@@ -177,8 +177,7 @@ def main() -> int:
                 valores.append(r["ms_por_mb"])
                 if r["faltas_maiores"] != "":
                     maiores.append(r["faltas_maiores"])
-                saida_swap = r["swap_out_delta_mb"] if r["swap_out_delta_mb"] != "" else r["swap_usado_delta_mb"]
-                swap_ativo = swap_ativo or (saida_swap != "" and saida_swap > 1)
+                swap_ativo = swap_ativo or comum.houve_swap(r["swap_out_delta_mb"], r["swap_usado_delta_mb"])
                 interrompido = interrompido or bool(r["interrompido"])
             if not valores:
                 break
