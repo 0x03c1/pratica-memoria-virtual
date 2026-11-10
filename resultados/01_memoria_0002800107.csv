@@ -1,0 +1,2 @@
+id,so,so_versao,arquitetura,cpu,nucleos_logicos,ram_total_mb,tamanho_pagina_bytes,python,data_hora,script,parametros,ram_disponivel_mb,ram_livre_mb,swap_total_mb,swap_usado_mb,especificacao_ram,clock_real_mhz,latencia_ns,vazao_gb_s_por_canal
+0002800107,Linux,Linux Mint 22.3 (kernel 7.0.0-38-generic),x86_64,AMD Ryzen 5 5600G with Radeon Graphics,12,15351,4096,3.12.3,2026-11-10T17:05:22,01_inspecionar_memoria,mts=3200.0 cl=16.0,11711,7950,2048,0,no Linux a velocidade dos pentes só aparece com 'sudo dmidecode -t memory' (não é necessário para a prática),1600.0,10.0,25.6

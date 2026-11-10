@@ -4,16 +4,19 @@ venv/
 __pycache__/
 *.pyc
 
-# Saída gerada pelos scripts (mantém só a pasta)
+# Saída gerada pelos scripts: os arquivos da entrega vão para o commit
 resultados/*
 !resultados/.gitkeep
+!resultados/*.csv
+!resultados/*.png
+!resultados/*.md
+!resultados/identificacao.txt
+!resultados/gabriel
 
 # CSVs de colegas copiados para a discussão
 dados/turma/
 
-# Relatórios preenchidos (o modelo continua versionado)
-entrega/RELATORIO-*.md
-!entrega/RELATORIO-MODELO.md
+# Relatórios preenchidos em entrega/ não são ignorados: também vão para a entrega.
 
 # Sistema operacional e editores
 .DS_Store
