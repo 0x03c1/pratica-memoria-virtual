@@ -17,7 +17,6 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
-import platform
 import sys
 import time
 from pathlib import Path
