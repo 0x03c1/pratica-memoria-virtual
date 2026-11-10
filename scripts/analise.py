@@ -113,11 +113,11 @@ def analisar_blocos(linhas: list[dict]) -> dict:
         grupo = por_tamanho[tam]
         est = comum.estatisticas([num(g["ms_por_mb"]) for g in grupo])
         maiores = [num(g["faltas_maiores"]) for g in grupo if num(g["faltas_maiores"]) is not None]
-        swap = [num(g["swap_out_delta_mb"]) if num(g["swap_out_delta_mb"]) is not None
-                else num(g["swap_usado_delta_mb"], 0) for g in grupo]
+        swap_ativo = any(comum.houve_swap(num(g["swap_out_delta_mb"]), num(g["swap_usado_delta_mb"]))
+                         for g in grupo)
         tabela.append({"tamanho_mb": tam, **est,
                        "faltas_maiores_media": statistics.fmean(maiores) if maiores else "",
-                       "swap_ativo": "sim" if any(s > 1 for s in swap) else "não",
+                       "swap_ativo": "sim" if swap_ativo else "não",
                        "acima_da_disponivel": "sim" if tam > disp else "não"})
     base_lista = [t["mediana"] for t in tabela if t["n"] > 1] or [tabela[0]["mediana"]]
     base = statistics.median(base_lista)
@@ -145,8 +145,7 @@ def analisar_penhasco(linhas: list[dict]) -> dict:
         if quebra is None and seguidas >= 1:  # mesma regra do 03: fatias lentas no fim da varredura
             quebra = num(fatias[len(fatias) - seguidas]["inicio_mb"])
         ms = [num(f["ms_por_mb"]) for f in fatias]
-        base_lista = [num(f["ms_por_mb"]) for f in fatias[1:5] if num(f["fim_mb"]) <= 0.6 * disp] or ms[:2]
-        base = statistics.median(base_lista)
+        base = comum.base_penhasco(ms, [num(f["fim_mb"]) for f in fatias], disp)  # mesma regra do 03
         r = {"repeticao": rep, "disponivel_mb": disp, "base": base, "quebra_mb": quebra,
              "x": [num(f["fim_mb"]) for f in fatias], "y": ms}
         if quebra is not None:
