@@ -1,0 +1,2 @@
+id,so,so_versao,arquitetura,cpu,nucleos_logicos,ram_total_mb,tamanho_pagina_bytes,python,data_hora,script,parametros,ram_disponivel_mb,ram_livre_mb,swap_total_mb,swap_usado_mb,especificacao_ram,clock_real_mhz,latencia_ns,vazao_gb_s_por_canal
+dupla0002800107,Linux,Linux Mint 22.3 (kernel 7.0.0-42-generic),x86_64,Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz,8,7815,4096,3.12.3,2026-11-10T11:00:13,01_inspecionar_memoria,mts=3200.0 cl=16.0,3565,2177,2048,168,no Linux a velocidade dos pentes só aparece com 'sudo dmidecode -t memory' (não é necessário para a prática),1600.0,10.0,25.6
