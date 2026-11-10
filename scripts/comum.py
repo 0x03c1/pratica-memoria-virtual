@@ -16,6 +16,7 @@ import math
 import mmap
 import os
 import platform
+import re
 import statistics
 import subprocess
 import sys
@@ -282,18 +283,50 @@ def diferenca_faltas(antes: dict, depois: dict) -> dict:
             for k in antes}
 
 
+def _swap_macos_mb() -> tuple[float | None, float | None]:
+    """Swapins e Swapouts acumulados no macOS, em MB, lidos do vm_stat.
+
+    No macOS o psutil devolve em sin/sout os contadores Pageins/Pageouts (leitura e escrita
+    de arquivos mapeados), que quase não mudam quando a memória dos programas vai para o
+    swap. Os contadores de swap de verdade são Swapins/Swapouts.
+    """
+    try:
+        saida = subprocess.run(["vm_stat"], capture_output=True, text=True, timeout=5).stdout
+    except (OSError, subprocess.SubprocessError):
+        return None, None
+    pagina = TAMANHO_PAGINA
+    valores = {}
+    for linha in saida.splitlines():
+        achou = re.search(r"page size of (\d+) bytes", linha)
+        if achou:
+            pagina = int(achou.group(1))
+        elif ":" in linha:
+            nome, _, valor = linha.partition(":")
+            valores[nome.strip()] = valor.strip().rstrip(".")
+    try:
+        return int(valores["Swapins"]) * pagina / MB, int(valores["Swapouts"]) * pagina / MB
+    except (KeyError, ValueError):
+        return None, None
+
+
 def ler_memoria() -> dict:
     """RAM disponível e swap, em MB. swap_in/out acumulados (vazios no Windows)."""
     psutil = exigir_psutil()
     vm = psutil.virtual_memory()
     sw = psutil.swap_memory()
-    tem_contadores = platform.system() != "Windows"
+    sistema = platform.system()
+    if sistema == "Darwin":
+        swap_in, swap_out = _swap_macos_mb()
+    elif sistema == "Windows":
+        swap_in = swap_out = None  # o Windows não expõe esses contadores sem privilégios
+    else:
+        swap_in, swap_out = sw.sin / MB, sw.sout / MB
     return {
         "disponivel_mb": vm.available / MB,
         "swap_total_mb": sw.total / MB,
         "swap_usado_mb": sw.used / MB,
-        "swap_in_mb": sw.sin / MB if tem_contadores else None,
-        "swap_out_mb": sw.sout / MB if tem_contadores else None,
+        "swap_in_mb": swap_in,
+        "swap_out_mb": swap_out,
     }
 
 
@@ -306,6 +339,27 @@ def diferenca_swap(antes: dict, depois: dict) -> dict:
     return {"swap_in_delta_mb": delta("swap_in_mb"),
             "swap_out_delta_mb": delta("swap_out_mb"),
             "swap_usado_delta_mb": delta("swap_usado_mb")}
+
+
+def houve_swap(swap_out_delta_mb, swap_usado_delta_mb, limiar_mb: float = 1.0) -> bool:
+    """'Swap ativo?' da tabela do slide: algo foi enviado ao swap ou o swap usado cresceu.
+
+    Usa as duas evidências porque cada SO expõe uma delas melhor (no Windows só existe a
+    segunda). Valores vazios ('' ou None) são ignorados.
+    """
+    return any(v not in ("", None) and v > limiar_mb for v in (swap_out_delta_mb, swap_usado_delta_mb))
+
+
+def base_penhasco(ms_por_mb: list[float], fim_mb: list[float], disponivel_mb: float) -> float | None:
+    """Linha de base da varredura fina (03 e analise.py usam a mesma regra).
+
+    Mediana das fatias 1 a 4 (a fatia 0 ainda sofre efeitos de início) que terminam bem
+    abaixo da RAM disponível (até 60%). Se houver menos de duas assim, usa as duas primeiras.
+    """
+    seguras = [ms for ms, fim in zip(ms_por_mb[1:5], fim_mb[1:5]) if fim <= 0.6 * disponivel_mb]
+    if len(seguras) >= 2:
+        return statistics.median(seguras)
+    return statistics.median(ms_por_mb[:2]) if ms_por_mb else None
 
 
 # ---------------------------------------------------------------------------
