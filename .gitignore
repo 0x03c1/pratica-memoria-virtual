@@ -1,0 +1,23 @@
+# Ambiente virtual e cache do Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Saída gerada pelos scripts (mantém só a pasta)
+resultados/*
+!resultados/.gitkeep
+
+# CSVs de colegas copiados para a discussão
+dados/turma/
+
+# Relatórios preenchidos (o modelo continua versionado)
+entrega/RELATORIO-*.md
+!entrega/RELATORIO-MODELO.md
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

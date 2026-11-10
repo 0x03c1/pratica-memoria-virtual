@@ -1,0 +1,8 @@
+# Dependências da prática (versões fixadas).
+# As linhas com "python_version" escolhem automaticamente a versão compatível
+# com o seu Python: numpy 2.5 e matplotlib 3.11 exigem Python 3.12 ou mais novo.
+psutil==7.2.2
+numpy==2.2.6 ; python_version < "3.12"
+numpy==2.5.4 ; python_version >= "3.12"
+matplotlib==3.10.8 ; python_version < "3.12"
+matplotlib==3.11.2 ; python_version >= "3.12"

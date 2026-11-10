@@ -1,0 +1,2 @@
+id,so,so_versao,arquitetura,cpu,nucleos_logicos,ram_total_mb,tamanho_pagina_bytes,python,data_hora,script,parametros,ram_disponivel_mb,ram_livre_mb,swap_total_mb,swap_usado_mb,especificacao_ram,clock_real_mhz,latencia_ns,vazao_gb_s_por_canal
+exemplo-linux-SINTETICO,Linux,Ubuntu 24.04 LTS (kernel 6.8) [SINTETICO],x86_64,SINTETICO: Intel Core i5 (hipotetico),12,7820,4096,3.12.8,2026-11-09T21:00:05,01_inspecionar_memoria,SINTETICO=1 mts=3200.0 cl=22.0,5200,2080,4096,120,SINTETICO,1600.0,13.75,25.6

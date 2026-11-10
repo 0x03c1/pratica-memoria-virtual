@@ -1,0 +1,16 @@
+id,so,so_versao,arquitetura,cpu,nucleos_logicos,ram_total_mb,tamanho_pagina_bytes,python,data_hora,script,parametros,destino,tamanho_mb,repeticao,tempo_s,mb_por_s
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,ram,100,1,0.010522,9503.934534
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,ram,100,2,0.00971,10298.306938
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,ram,100,3,0.009491,10535.926773
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,ram,100,4,0.011343,8815.751067
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,ram,100,5,0.009923,10077.851402
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,arquivo,100,1,0.126064,793.250756
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,arquivo,100,2,0.045455,2199.963916
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,arquivo,100,3,0.038584,2591.77864
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,arquivo,100,4,0.069794,1432.78022
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,arquivo,100,5,0.123276,811.190648
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,mmap,100,1,0.100461,995.408677
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,mmap,100,2,0.100144,998.558331
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,mmap,100,3,0.070874,1410.958793
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,mmap,100,4,0.082775,1208.099704
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:12:32,05_ram_arquivo_mmap,tamanho_mb=100 repeticoes=5 aquecimento=1,mmap,100,5,0.120516,829.766485

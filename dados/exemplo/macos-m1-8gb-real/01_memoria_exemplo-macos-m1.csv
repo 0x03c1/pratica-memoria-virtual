@@ -1,0 +1,2 @@
+id,so,so_versao,arquitetura,cpu,nucleos_logicos,ram_total_mb,tamanho_pagina_bytes,python,data_hora,script,parametros,ram_disponivel_mb,ram_livre_mb,swap_total_mb,swap_usado_mb,especificacao_ram
+exemplo-macos-m1,macOS,macOS 27.2,arm64,Apple M1,8,8192,16384,3.15.2,2026-11-09T23:10:54,01_inspecionar_memoria,mts=None cl=None,2230,84,8192,6990,8 GB LPDDR4
